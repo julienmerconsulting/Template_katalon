@@ -6,8 +6,10 @@
    <UUID>344b1e7d-40c8-4091-9ce6-2d138e4e91ae</UUID>
    <freeLicense>false</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
+   <modifiedEdition>ENTERPRISE</modifiedEdition>
+   <modifiedVersion>9.5.0</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\Users\DELL\Katalon Studio\circleciTest\test.prj</projectFileLocation>
+   <projectFileLocation>C:\Users\DELL\CircleCITest\Template_katalon\test.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>
