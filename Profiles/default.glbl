@@ -11,7 +11,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'http://demoaut.katalon.com'</initValue>
+      <initValue>'https://katalon-demo-cura.herokuapp.com/'</initValue>
       <name>G_SiteURL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
