@@ -16,7 +16,7 @@ jobs:
           command: |
             echo "Setting up Katalon"
             cd "C:\Users\DELL\Downloads\Katalon_Studio_Engine_Windows_64-9.6.0\Katalon_Studio_Engine_Windows_64-9.6.0"
-            echo $CIRCLE_WORKING_DIRECTORY 
+            echo $env:CIRCLE_WORKING_DIRECTORY
             echo "Running Katalon Tests"
             ./katalonc.exe -noSplash -runMode=console -projectPath="$CIRCLE_WORKING_DIRECTORY/test.prj" -retry=0 -testSuitePath="Test Suites/healthcare-tests - TS_RegressionTest" -browserType="Chrome (headless)" -executionProfile="default" -apiKey="b94ec67c-71aa-4aec-984f-090299d887c3" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true
 
