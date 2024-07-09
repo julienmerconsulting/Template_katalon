@@ -11,17 +11,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set Up Katalon
+          name: Set Up and run Katalon
           shell: powershell.exe
           command: |
             echo "Setting up Katalon"
             cd "C:\Users\DELL\Downloads\Katalon_Studio_Windows_64-9.3.2\Katalon_Studio_Windows_64-9.3.2"
-      - run:
-          name: Run Katalon Tests
-          shell: powershell.exe
-          command: |
             echo "Running Katalon Tests"
-            ls
             ./katalonc.exe -noSplash -runMode=console -projectPath="$CIRCLE_WORKING_DIRECTORY/test.prj" -retry=0 -testSuitePath="Test Suites/healthcare-tests - TS_RegressionTest" -browserType="Chrome (headless)" -executionProfile="default" -apiKey="b94ec67c-71aa-4aec-984f-090299d887c3" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true
 
 
