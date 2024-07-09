@@ -12,11 +12,13 @@ jobs:
       - checkout
       - run:
           name: Set Up Katalon
+          shell: powershell.exe
           command: |
             echo "Setting up Katalon"
-            cd "C:/Users/DELL/Downloads/Katalon_Studio_Windows_64-9.3.2/Katalon_Studio_Windows_64-9.3.2"
+            cd "C:\Users\DELL\Downloads\Katalon_Studio_Windows_64-9.3.2\Katalon_Studio_Windows_64-9.3.2"
       - run:
           name: Run Katalon Tests
+          shell: powershell.exe
           command: |
             echo "Running Katalon Tests"
             katalonc \
