@@ -1,10 +1,38 @@
 version: 2.1
-orbs:
-    katalon-studio: katalon/katalon-studio@23.0.11
-    
+
+executors:
+  custom-windows-runner:
+    machine:
+      resource_class: grhzystmahfjfjfxccpksf/myagent
+
+jobs:
+  run-katalon-tests:
+    executor: custom-windows-runner
+    steps:
+      - checkout
+      - run:
+          name: Set Up and run Katalon
+          shell: powershell.exe
+          command: |
+            echo "Setting up Katalon"
+            cd "C:\Users\DELL\Downloads\Katalon_Studio_Engine_Windows_64-9.6.0\Katalon_Studio_Engine_Windows_64-9.6.0"
+            echo $env:CIRCLE_WORKING_DIRECTORY
+            ls $env:CIRCLE_WORKING_DIRECTORY
+            echo "Running Katalon Tests"
+            ./katalonc.exe -noSplash -runMode=console -projectPath="$env:CIRCLE_WORKING_DIRECTORY\test.prj" -retry=0 -testSuitePath="Test Suites/healthcare-tests - TS_RegressionTest" -browserType="Chrome (headless)" -executionProfile="default" -apiKey="b94ec67c-71aa-4aec-984f-090299d887c3" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true
+      - run:
+          name: Verify Test Results
+          shell: powershell.exe
+          command: |
+            echo "Verifying Test Results"
+            Get-ChildItem -Path "$env:CIRCLE_WORKING_DIRECTORY\Reports" -Recurse
+      - store_test_results:
+          path: ./Reports
+      - store_artifacts: 
+          path: ./Reports
+
 workflows:
+  version: 2
   build:
     jobs:
-        - katalon-studio/run:
-                version: "latest"
-                command_arguments: '-browserType="Chrome" -retry=2 -statusDelay=15 -testSuitePath="Test Suites/healthcare-tests - TS_RegressionTest"' 
+      - run-katalon-tests
