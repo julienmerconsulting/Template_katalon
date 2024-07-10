@@ -28,7 +28,7 @@ jobs:
             Get-ChildItem -Path "$env:CIRCLE_WORKING_DIRECTORY\Reports" -Recurse
       - store_test_results:
           path: ./Reports
-      - store_artifact: 
+      - store_artifacts: 
           path: ./Reports
 
 workflows:
