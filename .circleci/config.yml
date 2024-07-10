@@ -27,7 +27,7 @@ jobs:
             echo "Verifying Test Results"
             Get-ChildItem -Path "$env:CIRCLE_WORKING_DIRECTORY\Reports" -Recurse
       - store_test_results:
-          path: Reports/**/*.xml
+          path: ./Reports
 
 workflows:
   version: 2
